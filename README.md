@@ -1,6 +1,7 @@
 # Persian Voice Phone Directory (MVP)
  
-A Persian voice phone directory. Say a name or job title, hear the number back. Fully self-hosted, open-source ASR/TTS.(no third-party speech API).
+A Persian voice phone directory. Say a name or job title, hear the number back. 
+Fully self-hosted, open-source ASR/TTS.(no third-party speech API).
 
 Built as a proof of concept for private company.
 
