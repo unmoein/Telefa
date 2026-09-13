@@ -1,6 +1,6 @@
 # Persian Voice Phone Directory (MVP)
 
-A voice-driven Persian phone directory: say a person's name or job title, and it transcribes your speech, looks up the contact, and speaks the phone number back - using open-source, self-hostable models (no third-party speech API).
+A Persian voice phone directory. Speak a name or job title, hear the number back. Fully self-hosted, open-source ASR/TTS.(no third-party speech API).
 
 Built as a proof of concept for private company.
 
@@ -11,15 +11,12 @@ Built as a proof of concept for private company.
 3. **Match** — the request is normalized and fuzzy-matched against `contacts.csv` (`Name`, `Role`, `Number`) using [RapidFuzz](https://github.com/rapidfuzz/RapidFuzz). If it's ambiguous, the assistant asks a follow-up question instead of guessing.
 4. **Speak** — [Piper](https://github.com/rhasspy/piper) (`fa_IR-ganji_adabi-medium`) synthesizes the spoken reply, fully offline.
 
-## Features
+## Challenges solved
 
-- Fully self-hosted ASR + TTS — no paid speech APIs
-- Lookup by name **or** job title
-- Ambiguity handling via clarifying follow-up questions
-- Supports multiple phone types per contact (mobile / office / home)
-- Numbers are spoken as Persian digit words
-- Auto-selects GPU or CPU
-- Optional Gradio web demo for testing without the notebook
+- **Name vs. role disambiguation** — determines whether a caller meant a person's name or their job title, and combines fuzzy scores accordingly instead of just taking the top match.
+- **ambiguity handling** — asks a clarifying follow-up instead of guessing when multiple contacts plausibly match.
+- **Fully offline speech loop** — no cloud ASR/TTS calls, making it usable in privacy-sensitive or air-gapped settings.
+- **No LLM in the matching loop** — contact resolution is pure heuristic/fuzzy-scoring logic, not a model call, so lookups are fast and deterministic.
 
 ## Tech stack
 
